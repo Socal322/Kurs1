@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Движение по квадрату</title>
+  <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <style>
+    img {
+      float: left;
+    }
+  </style>
+  <script>
+    function func1() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=4";
+    }
+
+    function func2() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=8";
+    }
+
+    function func3() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=9";
+    }
+	  function func4() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=12";
+    }
+
+    function func5() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=13";
+    }
+
+    function func6() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=16";
+    }
+	  function func7() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=17";
+    }
+
+    function func8() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/Y7ShwJYZZRw?start=20";
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="primary_header">
+      <h1 class="title">Движение по квадрату</h1>
+    </div>
+  </header>
+
+  <section>
+    <center>
+      <h3 class="TextH3">Движение по квадрату</h3>
+      <p class="textP">Робот будет двигаться по квадрату или прямоугольнику в зависимости от того, какие параметры передаст пользователь</p>
+      <div class="imgCenter">
+        <table>
+          <tr>
+            <td><img id="img1" src="images/DvizhPoKvadrStart.png" onclick="func1()" alt="" /></td>
+            <td width="300">
+              <p>Движение вперёд в течении 5,5 секунд</p>
+            </td>
+          </tr>
+          <tr>
+            <td><img id="img2" src="images/DvizhPoKvadrPovorot.png" onclick="func2()" alt="" /></td>
+            <td width="300">Поворот робота налево</td>
+          </tr>
+          <tr>
+            <td><img id="img3" src="images/DvizhPoKvadrVpered.png" onclick="func3()" alt="" /></td>
+            <td width="300">Движение вперёд в течении 5,8 секунд</td>
+          </tr>
+			<tr>
+            <td><img id="img4" src="images/DvizhPoKvadrPovorot.png" onclick="func4()" alt="" /></td>
+            <td width="300">Поворот робота налево</td>
+          </tr>
+          <tr>
+            <td><img id="img5" src="images/DvizhPoKvadrVpered.png" onclick="func5()" alt="" /></td>
+            <td width="300">Движение вперёд в течении 5,8 секунд</td>
+          </tr>
+			<tr>
+            <td><img id="img6" src="images/DvizhPoKvadrPovorot.png" onclick="func6()" alt="" /></td>
+            <td width="300">Поворот робота налево</td>
+          </tr>
+          <tr>
+            <td><img id="img7" src="images/DvizhPoKvadrVpered.png" onclick="func7()" alt="" /></td>
+            <td width="300">Движение вперёд в течении 5,8 секунд</td>
+          </tr>
+			<tr>
+            <td><img id="img8" src="images/DvizhPoKvadrKonec.png" onclick="func8()" alt="" /></td>
+            <td width="300">Поворот робота налево и завершение программы</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe id="video" width="100%" height="500" src="https://www.youtube.com/embed/Y7ShwJYZZRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </center>
+  </section>
+
+  <div class="primary_header">
+    <h1 class="title"><a href="index.html">На главную</a></h1>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Танковый разворот</title>
+  <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <style>
+    img {
+      float: left;
+    }
+  </style>
+  <script>
+    function func1() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/_O6PHXIy2nA?start=5";
+    }
+
+    function func2() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/_O6PHXIy2nA?start=8";
+    }
+
+    function func3() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/_O6PHXIy2nA?start=10";
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="primary_header">
+      <h1 class="title"> Танковый разворот</h1>
+    </div>
+  </header>
+
+  <section>
+    <center>
+      <h3 class="TextH3">Танковый разворот</h3>
+      <p class="textP">Танковый разворот — это разворот машины на месте. Такой разворот робота возможен за счёт того, что правое и левое колёсо начинают вращаться в разные стороны</p>
+      <div class="imgCenter">
+        <table>
+          <tr>
+            <td><img id="img1" src="images/tankrazv1.png" onclick="func1()" alt="" /></td>
+            <td width="300">
+              <p>Движение вперёд в течении 2 секунд</p>
+            </td>
+          </tr>
+          <tr>
+            <td><img id="img2" src="images/tankrazv2.png" onclick="func2()" alt="" /></td>
+            <td width="300">Танковый разворот</td>
+          </tr>
+          <tr>
+            <td><img id="img3" src="images/tankrazv3.png" onclick="func3()" alt="" /></td>
+            <td width="300">Движение вперёд в течении 2 секунд</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe id="video" width="100%" height="500" src="https://www.youtube.com/embed/_O6PHXIy2nA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </center>
+  </section>
+
+  <div class="primary_header">
+    <h1 class="title"><a href="index.html">На главную</a></h1>
+  </div>
+</body>
+
+</html>
