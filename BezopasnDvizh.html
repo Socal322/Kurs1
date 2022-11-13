@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Безопасное движение</title>
+  <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <style>
+    img {
+      float: left;
+    }
+  </style>
+  <script>
+    function func1() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/6B8fViFb3Vs?start=3";
+    }
+
+    function func2() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/6B8fViFb3Vs?start=5";
+    }
+
+    function func3() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/6B8fViFb3Vs?start=7";
+    }
+	 function func4() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/6B8fViFb3Vs?start=20";
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="primary_header">
+      <h1 class="title">Безопасное движение</h1>
+    </div>
+  </header>
+
+  <section>
+    <center>
+      <h3 class="TextH3">Безопасное движение</h3>
+      <p class="textP">Робот будет отслеживать расстояние до объекта, если расстояние до объекта уменьшается, то уменьшается <br> и скорость робота, тем самым избегая столкновения с объектом</p>
+      <div class="imgCenter">
+        <table>
+          <tr>
+            <td><img id="img1" src="images/BezopasnDvizhStart.png" onclick="func1()" alt="" /></td>
+            <td width="350">
+              <p>Движение робота вперёд</p>
+            </td>
+          </tr>
+          <tr>
+            <td><img id="img2" src="images/BezopasnDvizhIf110.png" onclick="func2()" alt="" /></td>
+            <td width="300">Проверка: расстояние до объекта больше 110 см</td>
+          </tr>
+          <tr>
+            <td><img id="img3" src="images/BezopasnDvizhIf10.png" onclick="func3()" alt="" /></td>
+            <td width="300">Проверка: расстояние до объекта больше 10 см, если да, то скорость робота равна расстояние до объекта - 10</td>
+          </tr>
+			<tr>
+            <td><img id="img4" src="images/BezopasnDvizhFinish.png" onclick="func4()" alt="" /></td>
+            <td width="300">Остановка робота, если расстояние равно или меньше 10 см</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe id="video" width="100%" height="500" src="https://www.youtube.com/embed/6B8fViFb3Vs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </center>
+  </section>
+
+  <div class="primary_header">
+    <h1 class="title"><a href="index.html">На главную</a></h1>
+  </div>
+</body>
+
+</html>

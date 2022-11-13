@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Объезд препятствия</title>
+  <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <style>
+    img {
+      float: left;
+    }
+  </style>
+  <script>
+    function func1() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/481rkU_D4dI?start=3";
+    }
+
+    function func2() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/481rkU_D4dI?start=5";
+    }
+
+    function func3() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/481rkU_D4dI?start=8";
+    }
+	  function func4() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/481rkU_D4dI?start=9";
+    }
+
+    function func5() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/481rkU_D4dI?start=12";
+    }
+
+    function func6() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/481rkU_D4dI?start=14";
+    }
+
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="primary_header">
+      <h1 class="title">Объезд препятствия</h1>
+    </div>
+  </header>
+
+  <section>
+    <center>
+      <h3 class="TextH3">Объезд препятствия</h3>
+      <p class="textP">Робот будет объезжать препятствие нахоядщееся от него на расстояние 100 см,<br> после чего возвращается на на линию, по которой первоначально двигался</p>
+      <div class="imgCenter">
+        <table>
+          <tr>
+            <td><img id="img1" src="images/ObezdPrepStart.png" onclick="func1()" alt="" /></td>
+            <td width="350">
+              <p>Проверка: расстояние до объекта больше 100 см </p>
+            </td>
+          </tr>
+          <tr>
+            <td><img id="img2" src="images/ObezdPrepPovorotNapravoISirena.png" onclick="func2()" alt="" /></td>
+            <td width="300">Робот издаёт звук, выполняется поворот направо</td>
+          </tr>
+          <tr>
+            <td><img id="img3" src="images/ObezdPrepPovorotNalevo.png" onclick="func3()" alt="" /></td>
+            <td width="300">Поворот робота налево</td>
+          </tr>
+			<tr>
+            <td><img id="img4" src="images/ObezdPrepPriamo.png" onclick="func4()" alt="" /></td>
+            <td width="300">Движение прямо</td>
+          </tr>
+          <tr>
+            <td><img id="img5" src="images/ObezdPrepPovorotNalevo2.png" onclick="func5()" alt="" /></td>
+            <td width="300">Поворот робота налево</td>
+          </tr>
+			<tr>
+            <td><img id="img6" src="images/ObezdPrepPovorotNapravo2.png" onclick="func6()" alt="" /></td>
+            <td width="300">Поворот робота направо, конец программы</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe id="video" width="100%" height="500" src="https://www.youtube.com/embed/481rkU_D4dI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </center>
+  </section>
+
+  <div class="primary_header">
+    <h1 class="title"><a href="index.html">На главную</a></h1>
+  </div>
+</body>
+
+</html>

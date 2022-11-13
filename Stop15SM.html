@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Остановка на расстоянии</title>
+  <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <style>
+    img {
+      float: left;
+    }
+  </style>
+  <script>
+    function func1() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/MjaM2jH_jq0?start=3";
+    }
+
+    function func2() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/MjaM2jH_jq0?start=7";
+    }
+	  function func3() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/MjaM2jH_jq0?start=13";
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="primary_header">
+      <h1 class="title">Остановка на расстоянии</h1>
+    </div>
+  </header>
+
+  <section>
+    <center>
+      <h3 class="TextH3">Остановка на расстоянии</h3>
+      <p class="textP">Робот двигается вперёд до тех пор, пока расстояние до объекта не будет меньше 15 см.</p>
+      <div class="imgCenter">
+        <table>
+          <tr>
+            <td><img id="img1" src="images/Stop15SMStart.png" onclick="func1()" alt="" /></td>
+            <td width="370">
+              <p>Начало движение робота</p>
+            </td>
+          </tr>
+          <tr>
+            <td><img id="img2" src="images/Stop15SMIf.png" onclick="func2()" alt="" /></td>
+            <td width="300">Проверка: расстояние до стены меньше 15 см</td>
+          </tr>
+			<tr>
+            <td><img id="img3" src="images/Stop15SMFinish.png" onclick="func2()" alt="" /></td>
+            <td width="350">Расстояние до стены меньше 15 см, остановка робота</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe id="video" width="100%" height="400" src="https://www.youtube.com/embed/MjaM2jH_jq0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </center>
+  </section>
+
+  <div class="primary_header">
+    <h1 class="title"><a href="index.html">На главную</a></h1>
+  </div>
+</body>
+
+</html>

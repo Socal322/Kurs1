@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Движение по линии</title>
+  <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <style>
+    img {
+      float: left;
+    }
+  </style>
+  <script>
+    function func1() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/vL6FjKILa-w?start=3";
+    }
+
+    function func2() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/vL6FjKILa-w?start=5";
+    }
+
+    function func3() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/vL6FjKILa-w?start=9";
+    }
+
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="primary_header">
+      <h1 class="title">Движение по линии</h1>
+    </div>
+  </header>
+
+  <section>
+    <center>
+      <h3 class="TextH3">Движение по линии</h3>
+      <p class="textP">Робот будет двигаться по нарисованой пользователем линии используя датчик цвета.</p>
+      <div class="imgCenter">
+        <table>
+          <tr>
+            <td><img id="img1" src="images/dvizhPoChernLiniiStart.png" onclick="func1()" alt="" /></td>
+            <td width="300">
+              <p>Запуск робота в бесконечный цикл</p>
+            </td>
+          </tr>
+          <tr>
+            <td><img id="img2" src="images/dvizhPoChernLiniiNalevo.png" onclick="func2()" alt="" /></td>
+            <td width="300">Поворот робота налево</td>
+          </tr>
+          <tr>
+            <td><img id="img3" src="images/dvizhPoChernLiniiNapravo.png" onclick="func3()" alt="" /></td>
+            <td width="300">Поворот робота направо</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe id="video" width="100%" height="500" src="https://www.youtube.com/embed/vL6FjKILa-w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </center>
+  </section>
+
+  <div class="primary_header">
+    <h1 class="title"><a href="index.html">На главную</a></h1>
+  </div>
+</body>
+
+</html>

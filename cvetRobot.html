@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Распознавание цветов</title>
+  <link href="css/multiColumnTemplate.css" rel="stylesheet" type="text/css">
+  <style>
+    img {
+      float: left;
+    }
+  </style>
+  <script>
+    function func1() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/sqIG0OVYdIU?start=5";
+    }
+
+    function func2() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/sqIG0OVYdIU?start=14";
+    }
+
+    function func3() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/sqIG0OVYdIU?start=7";
+    }
+	  function func4() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/sqIG0OVYdIU?start=10";
+    }
+
+    function func5() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/sqIG0OVYdIU?start=11";
+    }
+
+    function func6() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/sqIG0OVYdIU?start=12";
+    }
+	  function func7() {
+      time = document.getElementById("video");
+      time.src = "https://www.youtube.com/embed/sqIG0OVYdIU?start=8";
+    }
+
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="primary_header">
+      <h1 class="title">Распознавание цветов</h1>
+    </div>
+  </header>
+
+  <section>
+    <center>
+      <h3 class="TextH3">Распознавание цветов</h3>
+      <p class="textP">Робот будет двигаться по прямой и выводить на экран распознаный цвет находящийся под ним</p>
+      <div class="imgCenter">
+        <table>
+          <tr>
+            <td><img id="img1" src="images/cvetRobotStart.png" onclick="func1()" alt="" /></td>
+            <td width="300">
+              <p>Запуск робота в бесконечный цикл</p>
+            </td>
+          </tr>
+          <tr>
+            <td><img id="img2" src="images/cvetRobotWhite.png" onclick="func3()" alt="" /></td>
+            <td width="300">Вывести на экран слово "синий"</td>
+          </tr>
+          <tr>
+            <td><img id="img3" src="images/cvetRobotBlue.png" onclick="func7()" alt="" /></td>
+            <td width="300">Вывести на экран слово "зелёный"</td>
+          </tr>
+			<tr>
+            <td><img id="img4" src="images/cvetRobotBlack.png" onclick="func4()" alt="" /></td>
+            <td width="300">Вывести на экран слово "чёрный"</td>
+          </tr>
+          <tr>
+            <td><img id="img5" src="images/cvetRobotBlue.png" onclick="func5()" alt="" /></td>
+            <td width="300">Вывести на экран слово "жёлтый"</td>
+          </tr>
+			<tr>
+            <td><img id="img6" src="images/cvetRobotBlue.png" onclick="func6()" alt="" /></td>
+            <td width="300">Вывести на экран слово "красный"</td>
+          </tr>
+          <tr>
+            <td><img id="img7" src="images/cvetRobotGreen.png" onclick="func2()" alt="" /></td>
+            <td width="300">Вывести на экран слово "белый"</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <iframe id="video" width="100%" height="500" src="https://www.youtube.com/embed/sqIG0OVYdIU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay=1; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </center>
+  </section>
+
+  <div class="primary_header">
+    <h1 class="title"><a href="index.html">На главную</a></h1>
+  </div>
+</body>
+
+</html>
