@@ -1,0 +1,997 @@
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 6.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IND780 View Scale Data</title>
+<script language="JavaScript">
+
+
+scaleUnitString             = "2 ~2 ~0 ~0 ~2";	// scale x primary unit
+var scaleUnit;
+numberOfRangesString        = "1 ~1 ~0 ~0 ~1";	// scale x number of ranges
+var numberOfRanges;
+scaleWeightRangeString      = "0 ~0 ~0 ~0 ~0"; // scale x in current weight range
+var scaleWeightRange;
+
+lowIncrementSizeString      = "50.000000 ~50.000000 ~0.000000 ~0.000000 ~50.000000";	// scale x low increment size
+var lowIncrementSize;
+midIncrementSizeString      = "0.000000 ~0.000000 ~0.000000 ~0.000000 ~0.000000";	// scale x mid increment size
+var midIncrementSize;
+highIncrementSizeString     = "0.000000 ~0.000000 ~0.000000 ~0.000000 ~0.000000";	// scale x high increment size
+var highIncrementSize;
+
+capacityString              = "100000.000000 ~100000.000000 ~0.000000 ~0.000000 ~200000.000000"; // scale x capacity
+var capacity;
+calibrationLowMidThresholdString = "0.000000 ~0.000000 ~0.000000 ~0.000000 ~0.000000"; // scale x low to mid threshold
+var calibrationLowMidThreshold;
+calibrationMidHighThresholdString = "0.000000 ~0.000000 ~0.000000 ~0.000000 ~0.000000"; // scale x mid to high threshold
+var calibrationMidHighThreshold;
+
+calibrationZeroCountsString = "24920 ~16117 ~0 ~0 ~0"; // scale x calibration zero counts
+var calibrationZeroCounts;
+
+calibrationXlowCountsString = "0 ~0 ~0 ~0 ~0";	// scale x extra low calibration counts
+var calibrationXlowCounts;
+calibrationLowCountsString  = "0 ~0 ~0 ~0 ~0";	// scale x low calibration counts
+var calibrationLowCounts;
+calibrationMidCountsString  = "0 ~0 ~0 ~0 ~0";	// scale x mid calibration counts
+var calibrationMidCounts;
+calibrationHighCountsString = "202940 ~194236 ~0 ~0 ~40000";	// scale x high calibration counts
+var calibrationHighCounts;
+
+calibrationXlowWeightString = "0.000000 ~0.000000 ~0.000000 ~0.000000 ~0.000000"; // scale x extra low calibration weight
+var calibrationXlowWeight;
+calibrationLowWeightString  = "0.000000 ~0.000000 ~0.000000 ~0.000000 ~0.000000"; // scale x low calibration weight
+var calibrationLowWeight;
+calibrationMidWeightString  = "0.000000 ~0.000000 ~0.000000 ~0.000000 ~0.000000"; // scale x mid calibration weight
+var calibrationMidWeight;
+calibrationHighWeightString = "80000.000000 ~80000.000000 ~0.000000 ~0.000000 ~200000.000000"; // scale x high calibration weight
+var calibrationHighWeight;
+
+linearityAdjustmentString   = "1 ~1 ~0 ~0 ~1"; // scale x linearity adjustment
+var linearityAdjustment;
+
+geoCodeString               = "16 ~16 ~0 ~0 ~16"; // scale x Geo Code
+var geoCode;
+
+mVvJumperString             = "3 ~3 ~0 ~0 ~3"; // scale x mV/V Jumper
+var mVvJumper;
+
+scaleTypeString             = "80 ~80 ~78 ~78 ~85"; // scale x scale type
+var scaleType;
+
+var calibrationSpanCounts = new Array(4);
+
+thisTerminal   = "IND780";
+thisNodeNumber = "0";
+masterNodeNumber = "0";
+numberOfScales = "3";
+language       = "9";
+
+var helpWindowObject = 0;
+
+var lastZeroCounts = new Array(5);
+var currentWeight = new Array(5);
+var currentCounts = new Array(5);
+var displayIncrements = new Array(5);
+
+var maxNumberOfRanges = 0;
+var maxLinearityAdjustPoints = 0;
+
+var txtId5        = ">|1|<"+" "+"Мощность";	//">|1|< Capacity"
+var txtId6        = ">|1|<"+" "+"Приращение";	//">|1|< Increment"
+var txtId7        = ">|1|<"+" "+"Показывать приращения";	//">|1|< Display Increments"
+var txtId8        = ">|2|<"+" "+"Мощность";	//">|2|< Capacity"
+var txtId9        = ">|2|<"+" "+"Приращение";	//">|2|< Increment"
+var txtId10       = ">|2|<"+" "+"Показывать приращения";	//">|2|< Display Increments"
+var txtId11       = ">|3|<"+" "+"Мощность";	//">|3|< Capacity"
+var txtId12       = ">|3|<"+" "+"Приращение";	//">|3|< Increment"
+var txtId13       = ">|3|<"+" "+"Показывать приращения";	//">|3|< Display Increments"
+var txtId24       = "Загрузка 1 Тестовый вес";					//"Load 1 Test Weight"
+var txtId25       = "Загрузка 1 - высокое значение кода АЦП";					//"Load 1 High Counts"
+var txtId26       = "Загрузка 2 Тестовый вес";					//"Load 2 Test Weight"
+var txtId27       = "Загрузка 2 - высокое значение кода АЦП";					//"Load 2 High Counts"
+var txtId28       = "Загрузка 3 Тестовый вес";					//"Load 3 Test Weight"
+var txtId29       = "Загрузка 3 - высокое значение кода АЦП";					//"Load 3 High Counts"
+var txtId30       = "Загрузка 4 Тестовый вес";					//"Load 4 Test Weight"
+var txtId31       = "Загрузка 4 - высокое значение кода АЦП";					//"Load 4 High Counts"
+var txtId35       = "2 точки";					//"2 Point"
+var txtId36       = "3 точки";					//"3 Point"
+var txtId37       = "4 точки";					//"4 Point"
+var txtId38       = "5 точек";					//"5 Point"
+var txtId39       = "Тестовый вес";					//"Test Weight"
+var txtId40       = "CalFree";					//"CalFree"
+var txtId41		= "2 мВ/В";					//"2mV/V"
+var txtId42		= "3 мВ/В";					//"3mV/V"
+
+var units = new Array("lb","kg","g","t","ton");
+
+GREEN = "#00ff00";
+GRAY  = "#c0c0c0";
+BLUE  = "#000080";
+GOLD  = "#FFD700";
+
+function loadParms() {
+	var i;
+	var temp;
+	//load arrays
+	scaleUnit = scaleUnitString.split("~");
+	numberOfRanges = numberOfRangesString.split("~");
+	scaleWeightRange = scaleWeightRangeString.split("~");
+	lowIncrementSize = lowIncrementSizeString.split("~");
+	midIncrementSize = midIncrementSizeString.split("~");
+	highIncrementSize = highIncrementSizeString.split("~");
+	capacity = capacityString.split("~");
+	calibrationLowMidThreshold = calibrationLowMidThresholdString.split("~");
+	calibrationMidHighThreshold = calibrationMidHighThresholdString.split("~");
+	calibrationZeroCounts = calibrationZeroCountsString.split("~");
+	calibrationXlowCounts = calibrationXlowCountsString.split("~");
+	calibrationLowCounts = calibrationLowCountsString.split("~");
+	calibrationMidCounts = calibrationMidCountsString.split("~");
+	calibrationHighCounts = calibrationHighCountsString.split("~");
+	calibrationXlowWeight = calibrationXlowWeightString.split("~");
+	calibrationLowWeight = calibrationLowWeightString.split("~");
+	calibrationMidWeight = calibrationMidWeightString.split("~");
+	calibrationHighWeight = calibrationHighWeightString.split("~");
+	linearityAdjustment = linearityAdjustmentString.split("~");
+	geoCode = geoCodeString.split("~");
+	mVvJumper = mVvJumperString.split("~");
+	scaleType = scaleTypeString.split("~");
+
+	//load translations
+	txtId1.innerHTML  = "Вид / Данные весов";					//"View / Scale Data"
+	txtId2.innerHTML  = "Номер весов";					//"Scale Number"
+	txtId3.innerHTML  = "Тип интерфейса";					//"Interface Type"
+	txtId4.innerHTML  = "Число диапазонов";					//"Number of Ranges"
+	txtId14.innerHTML = "Производительность";					//"Performance"
+	txtId15.innerHTML = "Код АЦП / Индикация приращения";					//"Counts / Display Increment"
+	txtId16.innerHTML = "Качество сигнала";					//"Signal Quality"
+	txtId17.innerHTML = "Текущий код АЦП";					//"Current Counts"
+	txtId18.innerHTML = "Код АЦП последнего обнуления";					//"Last Zero Counts"
+	txtId19.innerHTML = "Установленный код АЦП";					//"Adjusted Counts"
+	txtId20.innerHTML = "Текущий вес";					//"Current Weight"
+	txtId21.innerHTML = "Калибровка";					//"Calibration"
+	txtId22.innerHTML = "Код АЦП нуля калибровки";					//"Calibration Zero Counts"
+	txtId23.innerHTML = "Настройка линейности";					//"Linearity Adjustment"
+	txtId32.innerHTML = "Метод последней калибровки";					//"Last Calibration Method"
+	txtId33.innerHTML = "Код широты";					//"GEO Code"
+	txtId34.innerHTML = "Переключатель мВ/В";					//"mV/V Jumper"
+	txtId50.innerHTML = "&nbsp;"+"Терминал"+": "+thisTerminal+"&nbsp;";		//"Terminal: xxxxxxxx"
+	imgHelp.alt       = "Справка";					//"Help"
+	document.all.B1.value = "Начало"; 				//"Home"
+	document.all.B1.style.fontFamily = "Arial";
+	
+	// show "IND780" and "Terminal" in gold if the master
+	if ( parseInt(thisNodeNumber,10) == 0 || (parseInt(thisNodeNumber,10) > 0 && parseInt(masterNodeNumber,10) > 0 && parseInt(thisNodeNumber,10) == parseInt(masterNodeNumber,10)) )
+	{
+		txtId50.color = BLUE;
+		txtId50.style.backgroundColor = GOLD;
+	}	
+
+	//see if scale is active
+	for (i = 0; i < 5; i++) {
+		snObj = eval("sn"+(i+1));
+		if (scaleType[i].substr(0,2) == "78")
+			snObj.style.color = GRAY;
+		else
+			snObj.style.color = GREEN;
+	}
+
+	//load interface type
+	for (i = 0; i < 5; i++) {
+		var itObj = eval("it"+(i+1));
+		switch (scaleType[i].substr(0,2)) {	// need to ignore trailing space
+			case "65":	// Analog
+				temp = "Аналоговый";
+				break;
+			case "68":	// digiNet
+				temp = "digiNet";				
+				break;
+			case "73":	// IDNet
+				temp = "IDNet";
+				break;
+			case "78":	// None
+				temp = "      -";
+				break;
+			case "80":	// POWERCELL
+				temp = "POWERCELL";
+				break;
+			case "83":	// SICS balance
+				temp = "SICS";
+				break;
+			case "84":	// PDX
+				temp = "PDX";
+				break;	
+			case "85":	// Summing
+				temp = "Суммирование";
+				break;
+			default:
+				temp = "      -";	// None
+				break;
+		}
+		itObj.innerHTML = temp;
+	}
+
+	//load number of ranges
+	for ( i = 0; i < 5; i++ ) {
+		var nrObj = eval("nr"+(i+1));
+		if (scaleType[i].substr(0,2) == "78") {	// None
+			nrObj.innerHTML = "";
+			continue;
+		}
+		nrObj.innerHTML = numberOfRanges[i].charAt(0);
+	}
+
+	//calculate counts / display increment =
+	//  ((calibration span counts - calibration zero counts) * (range capacity / calibration weight)) /  display increments
+	//calculate signal quality
+	for (i = 1; i < 5; i++) {
+		displayCountsPerDisplayIncrement(i+"");	// section re-written, 8-Apr-08, JEK, defect 1519
+	}
+
+	//load calibration zero counts
+	loadCountItem(0,4,"cz",calibrationZeroCounts);
+
+	//load linearity adjustment
+	var laMsg = new Array(txtId35,txtId36,txtId37,txtId38);
+	for (i = 0; i < 4; i++) {
+		var laObj = eval("la"+(i+1));
+		if (scaleType[i].substr(0,2) != "78")
+		{
+			var linAdj = parseInt(linearityAdjustment[i].charAt(0), 10);
+			if ( linAdj > 0 && linAdj < 5 )
+				laObj.innerHTML = laMsg[linAdj-1];
+			else
+				laObj.innerHTML = "";
+		}
+		else
+			laObj.innerHTML = "";
+	}
+
+	//load last calibration method
+	for (i = 0; i < 4; i++) {
+		var lcObj = eval("lc"+(i+1));
+		var linAdj = parseInt(linearityAdjustment[i].charAt(0), 10);
+		if (scaleType[i].substr(0,2) == "78") {	// None
+			lcObj.innerHTML = "";
+			continue;
+		}
+		if ( linAdj == 0 )		// this was a calFREE operation
+			lcObj.innerHTML = txtId40;	// calFREE
+		else
+			lcObj.innerHTML = txtId39;	// Test Weight
+	}
+
+	// load Geo Code
+	loadCountItem(0,4,"gc",geoCode);
+
+	// load mV / V jumper setting
+	for (i = 0; i < 4; i++) {
+		var mvObj = eval("mv"+(i+1));
+		if (scaleType[i].substr(0,2) == "65")  // Analog
+		{
+			if (mVvJumper[i].charAt(0) == "2")
+				mvObj.innerHTML = txtId41;
+			else if (mVvJumper[i].charAt(0) == "3")
+				mvObj.innerHTML = txtId42;
+			else
+				mvObj.innerHTML = "";
+		}
+		else
+			mvObj.innerHTML = "";
+	}
+
+	parent.frame0Loaded = 1;
+}
+
+function displayCountsPerDisplayIncrement(scale)	// new, 8-Apr-08 JEK, defect 1519
+{
+	var i = parseInt(scale, 10) - 1;
+	var temp;
+	var displayIncrs;
+	var ciObj = eval("ci"+(i+1));
+	var imgObj = eval("img"+(i+1));
+	var currentRange = scaleWeightRange[i].charAt(0); 
+	var disIncs = getDisplayIncrements(scale, currentRange);
+	var rangeCap = getCapacity(scale, currentRange);
+	
+	calibrationHighCounts = calibrationHighCountsString.split("~");
+	calibrationZeroCounts = calibrationZeroCountsString.split("~");
+	calibrationHighWeight = calibrationHighWeightString.split("~");
+	
+	if ( disIncs.length == 0 )
+		displayIncrs = 0;
+	else
+		displayIncrs = parseInt(disIncs, 10);
+	temp = ((parseFloat(calibrationHighCounts[i]) - parseFloat(calibrationZeroCounts[i])) * parseFloat(rangeCap)) / parseFloat(calibrationHighWeight[i]);
+	if ( displayIncrs == 0 )
+		temp = 0;
+	else
+		temp = temp / displayIncrs;
+	temp = temp + 0.5;		// do some rounding
+	temp = temp+"";
+	temp = parseInt(temp,10);
+	ciObj.innerHTML = temp+"";	// load counts / increment
+	if (temp == 0)
+		imgObj.src = "whitebar.gif";	// scale not calibrated
+	else if (temp < 20)
+		imgObj.src = "redbar.gif";
+	else if (temp >= 20 && temp < 40)
+		imgObj.src = "yellowbar.gif";
+	else
+		imgObj.src = "greenbar.gif";
+}
+
+function getCapacity(scale, currentRange) {
+	var offset = parseInt(scale, 10) - 1;
+	var numRanges = parseInt(numberOfRanges[offset], 10);
+	var range = parseInt(currentRange, 10);
+	if ( numRanges == 1 ) {
+		if ( range == 0 || range == 1 )
+		{
+			return Format(capacity[offset],"");	
+		}
+		else
+			return "";
+	}
+	else if ( numRanges == 2 ) {
+		if ( range == 1 )
+			return Format(calibrationLowMidThreshold[offset],"");
+		else if ( range == 2 )
+			return Format(capacity[offset],"");
+		else
+			return "";
+	}
+	else if ( numRanges == 3 ) {
+		if ( range == 1 )
+			return Format(calibrationLowMidThreshold[offset],"");
+		else if ( range == 2 )
+			return Format(calibrationMidHighThreshold[offset],"");
+		else if ( range == 3 )
+			return Format(capacity[offset],"");
+		else
+			return "";
+	}
+	else
+		return "";
+}
+
+function getIncrement(scale, currentRange) {
+	var offset = parseInt(scale, 10) - 1;
+	var numRanges = parseInt(numberOfRanges[offset], 10);
+	var range = parseInt(currentRange, 10);
+	var lowInc = parseFloat( lowIncrementSize[offset] ) + "";
+	var midInc = parseFloat( midIncrementSize[offset] ) + "";
+	var highInc = parseFloat( highIncrementSize[offset] ) + "";
+	if ( numRanges == 1 ) {
+		if ( range == 1 || range == 0 )
+			return Format( lowInc, lowInc );
+		else
+			return "";
+	}
+	else if ( numRanges == 2 ) {
+		if ( range == 1 )
+			return Format( lowInc, lowInc );
+		else if (range == 2 )
+			return Format( highInc, highInc );
+		else
+			return "";
+	}
+	else if ( numRanges == 3 ) {
+		if ( range == 1 )
+			return Format( lowInc, lowInc );
+		else if ( range == 2 )
+			return Format( midInc, midInc );
+		else if (range == 3 )
+			return Format( highInc, highInc );
+		else
+			return "";
+	}
+	else
+		return "";
+}
+
+function getUnits(scale) {
+	var offset = parseInt(scale, 10) - 1;
+	var sclUnitOffset = parseInt(scaleUnit[offset],10) - 1;
+	return units[sclUnitOffset];
+}
+
+function getDisplayIncrements(scale, range) {
+	var temp = getCapacity(scale, range);
+	if ( temp.length == 0 )
+		return "";
+	var cap = parseFloat(temp);
+	temp = getIncrement(scale, range);
+	if ( temp.length == 0 )
+		return "";
+	var increment = parseFloat(temp);
+	if ( increment < 0.000001 )
+		return "";
+	var result = (cap / increment) + "";
+	return parseInt(result, 10) + "";
+}
+
+function getTestWeight(scale, linearityPoint) {
+	var offset = parseInt(scale, 10) - 1;
+	var numLinPts = parseInt(linearityAdjustment[offset], 10);
+	var linPt = parseInt(linearityPoint, 10);
+	if ( numLinPts == 1 ) {
+		if ( linPt == 1 )
+			return Format(calibrationHighWeight[offset], "");
+		else
+			return "";
+	}
+	else if ( numLinPts == 2 ) {
+		if ( linPt == 1 )
+			return Format(calibrationMidWeight[offset], "");
+		else if ( linPt == 2 )
+			return Format(calibrationHighWeight[offset], "");
+		else
+			return "";
+	}
+	else if ( numLinPts == 3 ) {
+		if ( linPt == 1 )
+			return Format(calibrationLowWeight[offset], "");
+		else if ( linPt == 2 )
+			return Format(calibrationMidWeight[offset], "");
+		else if ( linPt == 3 )
+			return Format(calibrationHighWeight[offset], "");
+		else
+			return "";
+	}
+	else if ( numLinPts == 4 ) {
+		if ( linPt == 1 )
+			return Format(calibrationXlowWeight[offset], "");
+		else if ( linPt == 2 )
+			return Format(calibrationLowWeight[offset], "");
+		else if ( linPt == 3 )
+			return Format(calibrationMidWeight[offset], "");
+		else if ( linPt == 4 )
+			return Format(calibrationHighWeight[offset], "");
+		else
+			return "";
+	}
+	else
+		return "";
+}
+
+function getSpanCounts(scale, linearityPoint) {
+	var offset = parseInt(scale, 10) - 1;
+	var numLinPts = parseInt(linearityAdjustment[offset], 10);
+	var linPt = parseInt(linearityPoint, 10);
+	if ( numLinPts == 1 ) {
+		if ( linPt == 1 )
+			return Format(calibrationHighCounts[offset], "");
+		else
+			return "";
+	}
+	else if ( numLinPts == 2 ) {
+		if ( linPt == 1 )
+			return Format(calibrationMidCounts[offset], "");
+		else if ( linPt == 2 )
+			return Format(calibrationHighCounts[offset], "");
+		else
+			return "";
+	}
+	else if ( numLinPts == 3 ) {
+		if ( linPt == 1 )
+			return Format(calibrationLowCounts[offset], "");
+		else if ( linPt == 2 )
+			return Format(calibrationMidCounts[offset], "");
+		else if ( linPt == 3 )
+			return Format(calibrationHighCounts[offset], "");
+		else
+			return "";
+	}
+	else if ( numLinPts == 4 ) {
+		if ( linPt == 1 )
+			return Format(calibrationXlowCounts[offset], "");
+		else if ( linPt == 2 )
+			return Format(calibrationLowCounts[offset], "");
+		else if ( linPt == 3 )
+			return Format(calibrationMidCounts[offset], "");
+		else if ( linPt == 4 )
+			return Format(calibrationHighCounts[offset], "");
+		else
+			return "";
+	}
+	else
+		return "";
+}
+
+function loadWeightItem(startScale, endScale, dispObject, wtValue) {
+	for (var i = startScale; i < endScale; i++) {
+		var unit = parseInt(scaleUnit[i],10)-1;
+		var unitName = (unit < 0) ? "--" : units[unit];
+		var increment = getIncrement((i+1)+"", scaleWeightRange[i]);
+		theObj = eval(dispObject+(i+1));
+		if (scaleType[i].substr(0,2) == "78") {	// None
+			theObj.innerHTML = " ";
+			continue;
+		}
+		if ( wtValue[i].charAt(0) == "-" && wtValue[i].charAt(1) == "-" )
+			theObj.innerHTML = "--------";
+		else	
+			theObj.innerHTML = Format(parseFloat(wtValue[i])+"",parseFloat(increment)+"");
+		theObj.innerHTML += " "+unitName;
+	}
+}
+
+function loadCountItem(startScale, endScale, dispObject, cntValue) {
+	for (var i = startScale; i < endScale; i++) {
+		theObj = eval(dispObject+(i+1));
+		if (scaleType[i].substr(0,2) == "78") {	// None
+			theObj.innerHTML = " ";
+			continue;
+		}
+		theObj.innerHTML = (parseInt(cntValue[i],10)+"");
+	}
+}
+
+function Format(val, inc) {  // get rid of non-significant trailing zeroes
+    var i;
+    var j;
+    var dpPos;
+    var trzeros;
+    var newval="";
+    var len=inc.length;
+    for (i=0;i<len;i++)  {		// search inc for dec pt.
+        if (inc.charAt(i)=='.')
+            break;
+    }
+    if (i==len)     // no dp found
+        return (parseInt(val, 10));
+    dpPos=i;        // save dp position
+    i=len-1;        // last char offset
+    while (i>dpPos) {
+        if (inc.charAt(i)!='0')
+            break;
+        i--;
+    }
+    if (i==dpPos)   // all zeros to right of dp
+        return (parseInt(val, 10));
+    j=val.indexOf("."); // find dp in val
+    if (j==-1) {        // no dp in val found, so add one + significant digits
+    	newval=val+'.';
+    	for (j=dpPos;j<i;j++)
+    		newval+='0';
+    	return newval;
+    }
+    // see if any trailing zeroes need to be added
+    len=(val.substring(j)).length;       // length of val from dp to end
+    trzeros=(i-dpPos)-(len-1);  // no. of trailing zeros to add
+    while (trzeros>0) {
+        val+='0';               // insert trailing zeros if needed
+        trzeros--;
+    }
+    j=j+(i-dpPos);      // last char in string that is significant
+    newval=val.substring(0, j+1);
+    return newval;
+}
+
+
+function refreshWeight() {		// initiated from scaledata2.htm
+	var i;
+	var temp;
+	//load last zero counts
+//	loadCountItem(0,4,"lz",lastZeroCounts);
+	for (i = 0; i < 4; i++)
+	{
+		var lzObj = eval("lz"+(i+1));
+		if (scaleType[i].substr(0,2) == "78" || scaleType[i].substr(0,2) == "73" || scaleType[i].substr(0,2) == "83") {	// None, IdNet, or SICS, defect 1609
+			lzObj.innerHTML = " ";
+			continue;
+		}
+		temp = parseInt(lastZeroCounts[i],10);
+		lzObj.innerHTML = temp+"";
+	}
+	loadCountItem(0,4,"cc",currentCounts);
+	for (i = 0; i < 4; i++) {
+		var acObj = eval("ac"+(i+1));
+		if (scaleType[i].substr(0,2) == "78" || scaleType[i].substr(0,2) == "73" || scaleType[i].substr(0,2) == "83") {	// None, IdNet, or SICS, defect 1609
+			acObj.innerHTML = " ";
+			continue;
+		}
+		temp = parseInt(currentCounts[i],10);
+		temp = temp - parseInt(lastZeroCounts[i],10);
+		acObj.innerHTML = temp+"";
+		displayCountsPerDisplayIncrement((i+1)+"");	// 8-Apr-08 JEK, defect 1519
+	}
+	loadWeightItem(0,5,"cu",currentWeight);
+}
+
+function nothing() {
+}
+
+function stopRefresh() {
+	parent.refreshState = 0;
+}
+
+function startRefresh() {
+	parent.refreshState = 1;
+}
+
+function excaliburHelp() {
+	var helpPage;
+	switch (language) {
+		case '0':
+			helpPage = "excaliburwebhelp.htm#Web_Server_Options";
+			break;
+		case '1':
+			helpPage = "excaliburwebhelpFrench.htm#Web_Server_Options";
+			break;
+		case '2':
+			helpPage = "excaliburwebhelpGerman.htm#Web_Server_Options";
+			break;
+		case '3':
+			helpPage = "excaliburwebhelpSpanish.htm#Web_Server_Options";
+			break;
+		case '4':
+			helpPage = "excaliburwebhelpChinese.htm#Web_Server_Options";
+			break;
+		case '6':
+			helpPage = "excaliburwebhelpItalian.htm#Web_Server_Options";
+			break;
+		case '7':
+			helpPage = "excaliburwebhelpSwedish.htm#Web_Server_Options";
+			break;
+		case '8':	
+			helpPage = "excaliburwebhelpPortuguese.htm#Web_Server_Options";
+			break;
+		case '9':
+			helpPage = "excaliburwebhelpRussian.htm#Web_Server_Options";
+			break;
+		default:	
+			helpPage = "excaliburwebhelp.htm#Web_Server_Options";
+			break;
+	}
+	helpWindowObject = window.open(helpPage, "EXCALHELP", "height=200,width=300,scrollbars,resizable");
+	return false;
+}
+
+</script>
+
+</head>
+
+<body onLoad="loadParms()">
+<font face="Arial" size="6" color="#000080">IND780</font><span style="position: relative; left: 50; top: 0">
+<font face="Arial" color="#000080" size="4" id="txtId50">&nbsp;</font></span>
+<span style="position: absolute; left: 586; top: 20"><a href="JavaScript:nothing()" onClick="return excaliburHelp()">
+<img src="qmbutton.gif" id="imgHelp" width="24" height="24" border="0" alt="Help" onMouseOver="stopRefresh()" onMouseOut="startRefresh()">
+</a></span><h3><font face="Arial" color="#000080" id="txtId1">&nbsp;</font></h3>
+<table style="BORDER-COLLAPSE: collapse" bordercolor="#111111" border="0" width="769">
+    <tr>
+      <td width="188" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="txtId2">
+		&nbsp;</font></b></td>
+      <td align="right" width="113" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="sn1">
+		1</font></b></td>
+      <td align="right" width="113" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="sn2">
+		2</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="sn3">
+		3</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="sn4">
+		4</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="sn5">
+		5</font></b></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId3">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="it1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="it2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="it3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="it4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="it5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId4">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="nr1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="nr2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="nr3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="nr4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="nr5">
+		&nbsp;</font></td>
+   </tr>
+<script language="JavaScript">
+	var i = 0;
+	var unit = "";
+	var numOfScales = parseInt(numberOfScales.charAt(0),10);
+	var scaleMsg = new Array(txtId5,txtId6,txtId7,txtId8,txtId9,txtId10,txtId11,txtId12,txtId13);
+	numberOfRanges = numberOfRangesString.split("~");
+	capacity = capacityString.split("~");
+	scaleUnit = scaleUnitString.split("~");
+	lowIncrementSize = lowIncrementSizeString.split("~");
+	midIncrementSize = midIncrementSizeString.split("~");
+	highIncrementSize = highIncrementSizeString.split("~");
+	calibrationLowMidThreshold = calibrationLowMidThresholdString.split("~");
+	calibrationMidHighThreshold = calibrationMidHighThresholdString.split("~");
+	calibrationZeroCounts = calibrationZeroCountsString.split("~");
+	calibrationXlowCounts = calibrationXlowCountsString.split("~");
+	calibrationLowCounts = calibrationLowCountsString.split("~");
+	calibrationMidCounts = calibrationMidCountsString.split("~");
+	calibrationHighCounts = calibrationHighCountsString.split("~");
+	calibrationXlowWeight = calibrationXlowWeightString.split("~");
+	calibrationLowWeight = calibrationLowWeightString.split("~");
+	calibrationMidWeight = calibrationMidWeightString.split("~");
+	calibrationHighWeight = calibrationHighWeightString.split("~");
+	for ( i = 0; i < 5; i++ ) {
+		if ( parseInt(numberOfRanges[i].charAt(0), 10 ) > maxNumberOfRanges )
+			maxNumberOfRanges = parseInt(numberOfRanges[i].charAt(0), 10);
+	}
+	for ( var r = 0; r < maxNumberOfRanges; r++ ) {
+		var rng = (r+1)+"";
+		document.write("<tr>");
+		document.write("<td width='188'><font face='Arial' color='#000080'>"+scaleMsg[r*3]+"</font></td>");	    // ">|x|< Capacity"
+		for ( i = 0; i < numOfScales; i++ ) {	// total number of scales
+			var scale = (i+1)+"";
+			var cap = getCapacity( scale, rng );
+					
+			if ( cap.length == 0 )
+				unit = "";
+			else
+				unit = getUnits( scale );
+			document.write("<td align='right' width='113'><font face='Arial' color='#000080'>"+cap+unit+"</font></td>");
+		}
+		document.write("</tr>");
+		document.write("<tr>");
+		document.write("<td width='188'><font face='Arial' color='#000080'>"+scaleMsg[r*3+1]+"</font></td>"); // ">|x|< Increment"
+		for ( i = 0; i < numOfScales; i++ ) {	// total number of scales
+			var scale = (i+1)+"";
+			var increment = getIncrement( scale, rng );
+			if ( increment.length == 0 )
+				unit = "";
+			else
+				unit = getUnits( scale );
+			document.write("<td align='right' width='113'><font face='Arial' color='#000080'>"+increment+unit+"</font></td>");
+		}
+		document.write("</tr>");
+		document.write("<tr>");
+		document.write("<td width='188'><font face='Arial' color='#000080'>"+scaleMsg[r*3+2]+"</font></td>"); // ">|x|< Display Increments"
+		for ( i = 0; i < numOfScales; i++ ) {	// total number of scales
+			var scale = (i+1)+"";
+			var displayIncrements = getDisplayIncrements( scale, rng );
+			document.write("<td align='right' width='113'><font face='Arial' color='#000080'>"+displayIncrements+"</font></td>");
+		}
+		document.write("</tr>");
+	}
+
+</script>
+   <tr>
+      <td width="188"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="113"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="113"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+   </tr>
+   <tr>
+      <td width="188" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="txtId14">
+		&nbsp;</font></b></td>
+      <td align="right" width="113" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="113" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId15">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="ci1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="ci2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="ci3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="ci4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="ci5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId16">&nbsp;</font></td>
+      <td align="right" width="113"><img id="img1" height="15" src="whitebar.gif" width="40" border="0"></td>
+      <td align="right" width="113"><img id="img2" height="15" src="whitebar.gif" width="40" border="0"></td>
+      <td align="right" width="114"><img id="img3" height="15" src="whitebar.gif" width="40" border="0"></td>
+      <td align="right" width="114"><img id="img4" height="15" src="whitebar.gif" width="40" border="0"></td>
+      <td align="right" width="114"><img id="img5" height="15" src="whitebar.gif" width="40" border="0"></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId17">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="cc1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="cc2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cc3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cc4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cc5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId18">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="lz1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="lz2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="lz3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="lz4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="lz5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId19">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="ac1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="ac2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="ac3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="ac4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="ac5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId20">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="cu1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="cu2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cu3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cu4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cu5">
+		&nbsp;</font></td>
+    </tr>
+	
+   <tr>
+      <td width="188"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="113"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="113"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+   </tr>
+   <tr>
+      <td width="188" bgcolor="#000080"><b><font face="Arial" color="#00ff00" id="txtId21">
+		&nbsp;</font></b></td>
+      <td align="right" width="113" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="113" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+      <td align="right" width="114" bgcolor="#000080"><b><font face="Arial" color="#00ff00">
+		&nbsp;</font></b></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId22">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="cz1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="cz2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cz3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cz4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="cz5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId23">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="la1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="la2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="la3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="la4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="la5">
+		&nbsp;</font></td>
+    </tr>
+<script language="JavaScript">
+	var i = 0;
+	var numOfScales = parseInt(numberOfScales.charAt(0),10);
+	var loadMsgs = new Array(txtId24,txtId25,txtId26,txtId27,txtId28,txtId29,txtId30,txtId31);
+	linearityAdjustment = linearityAdjustmentString.split("~");
+	for (i = 0; i < 4; i++) {
+		var linAdj = parseInt(linearityAdjustment[i].charAt(0), 10);
+		if ( linAdj > maxLinearityAdjustPoints )
+			maxLinearityAdjustPoints = linAdj;
+	}
+	for ( var l = 0; l < maxLinearityAdjustPoints; l++ ) {
+		var lin = (l+1)+"";
+		document.write("<tr>");
+		document.write("<td width='188'><font face='Arial' color='#000080'>"+loadMsgs[l*2]+"</font></td>");	    // "Load x Test Weight"
+		for ( i = 0; i < numOfScales; i++ ) {	// total number of scales
+			var scale = (i+1)+"";
+			var testWt = getTestWeight( scale, lin );
+			document.write("<td align='right' width='113'><font face='Arial' color='#000080'>"+testWt+"</font></td>");
+		}
+		document.write("</tr>");
+		document.write("<tr>");
+		document.write("<td width='188'><font face='Arial' color='#000080'>"+loadMsgs[l*2+1]+"</font></td>"); // "Load x Span Counts"
+		for ( i = 0; i < numOfScales; i++ ) {	// total number of scales
+			var scale = (i+1)+"";
+			var spanCnts = getSpanCounts( scale, lin );
+			document.write("<td align='right' width='113'><font face='Arial' color='#000080'>"+spanCnts+"</font></td>");
+		}
+		document.write("</tr>");
+	}
+</script>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId32">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="lc1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="lc2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="lc3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="lc4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="lc5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId33">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="gc1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="gc2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="gc3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="gc4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="gc5">
+		&nbsp;</font></td>
+    </tr>
+    <tr>
+      <td width="188"><font face="Arial" color="#000080" id="txtId34">&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="mv1">
+		&nbsp;</font></td>
+      <td align="right" width="113"><font face="Arial" color="#000080" id="mv2">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="mv3">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="mv4">
+		&nbsp;</font></td>
+      <td align="right" width="114"><font face="Arial" color="#000080" id="mv5">
+		&nbsp;</font></td>
+    </tr>
+   <tr>
+      <td width="188"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="113"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="113"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+      <td align="right" width="114"><b><font face="Arial">&nbsp;</font></b></td>
+   </tr>
+</table>
+<hr>
+<input type="button" value="" name="B1" onclick="parent.history.go(-1)">
+
+
+</body>
